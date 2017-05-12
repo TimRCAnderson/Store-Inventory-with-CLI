@@ -1,0 +1,29 @@
+{
+  "name": "store-inventory-with-cli",
+  "version": "1.0.0",
+  "description": "A git project to create a SQL database for a fictitious store that allows users to buy things, managers to manage inventory, and supervisors to manage revenue.",
+  "main": "bamazonMain.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TimRCAnderson/Store-Inventory-with-CLI.git"
+  },
+  "keywords": [
+    "dontusethis",
+    "store",
+    "cli"
+  ],
+  "author": "Timothy Anderson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TimRCAnderson/Store-Inventory-with-CLI/issues"
+  },
+  "homepage": "https://github.com/TimRCAnderson/Store-Inventory-with-CLI#readme",
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "mysql": "^2.13.0",
+    "prompt": "^1.0.0"
+  }
+}
