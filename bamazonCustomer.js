@@ -2,6 +2,7 @@ require("dotenv").config();
 var password = process.env.password;
 var prompt = require("prompt");
 var mysql = require("mysql");
+var inquirer = require("inquirer");
 
 var connection = mysql.createConnection(
   {
@@ -13,7 +14,26 @@ var connection = mysql.createConnection(
   }
 );
 
-listProducts();
+var shopInq = [{
+  type: "list",
+  message: "What would you like to do?",
+  name: "isShopping",
+  choices: [{name: "view the catalog to shop.", value: true}, {name: "Exit the program.", value: false}]
+}];
+
+function shopQuestion()
+{
+  inquirer.prompt(shopInq).then(function(answers) {
+    if(answers.isShopping)
+    {
+      listProducts();
+    }
+    else
+    {
+      process.exit();
+    }
+  });
+}
 
 function listProducts()
 {
@@ -63,6 +83,8 @@ function sell(sale, item)
   connection.query("UPDATE products SET stock_quantity = ? WHERE item_id = ?", [(item.stock_quantity - sale.quantity), sale.id], function(err, res) {
     if(err) throw err;
     console.log("The total price of your order is $" + (sale.quantity * item.price) + ".");
-    listProducts();
+    shopQuestion();
   });
 }
+
+shopQuestion();
